@@ -1,9 +1,38 @@
+<h1>Burgers</h1>
+{{!-- grouping for burgers where devoured = false --}}
+<h2>Made to Order!</h2>
+
 <ul>
-  {{#each animals}}
-    <li>
-      <p>Type: {{animalType}}</p>
-      <p>Pet: {{pet}}</p>
-      <p>Fierceness: {{fierceness}}</p>
-    </li>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/unless}}
   {{/each}}
 </ul>
+{{!-- grouping for burgers where devoured = true --}}
+<h2>Already Eaten!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+{{!-- form to create/add new burger --}}
+<h2>Add a Burger</h2>
+<form class="form">
+
+  <div class="form-group">
+    <label for="burg">Burger Name:</label>
+    <input type="text" id="burg" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="devour">Devour?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Already Eaten!<br>
+    <input type="radio" name="sleepy" value="0"> Made to Order!
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>

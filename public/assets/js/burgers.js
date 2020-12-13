@@ -1,57 +1,42 @@
 $(function() {
+    //change devoured state on click
     $(".devour").on("click", function(event) {
       var id = $(this).data("id");
-      var newDevour = $(this).data("newsleep");
+      var newDevour = $(this).data("newdevour");
   
       var eatenState = {
         sleepy: newDevour
       };
   
-      // Send the PUT request.
-      $.ajax("/api/cats/" + id, {
+      //put request to update burger
+      $.ajax("/api/burgers/" + id, {
         type: "PUT",
-        data: eatState
+        data: eatenState
       }).then(
         function() {
           console.log("changed devour to", newDevour);
-          //reloads page to update lists
+          //reload page, update list
           location.reload();
         }
       );
     });
   
-    $(".create-form").on("submit", function(event) {
-      // Make sure to preventDefault on a submit event.
+    $(".form").on("submit", function(event) {
       event.preventDefault();
   
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
+      var newBurger = {
+        name: $("#burg").val().trim(),
+        devoured: $("[name=devoured]:checked").val().trim()
       };
   
-      // Send the POST request.
-      $.ajax("/api/cats", {
+      //POST request to insert new Burger data into burgers table
+      $.ajax("/api/burgers", {
         type: "POST",
-        data: newCat
+        data: newBurger
       }).then(
         function() {
-          console.log("created new cat");
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
-    });
-  
-    $(".delete-cat").on("click", function(event) {
-      var id = $(this).data("id");
-  
-      // Send the DELETE request.
-      $.ajax("/api/cats/" + id, {
-        type: "DELETE"
-      }).then(
-        function() {
-          console.log("deleted cat", id);
-          // Reload the page to get the updated list
+          console.log("New Burger Made to Order");
+          //reload page, update list
           location.reload();
         }
       );

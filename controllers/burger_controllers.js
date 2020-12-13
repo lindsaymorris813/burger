@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 // import models burger.js
-var cat = require("../models/burger.js");
+var burgers = require("../models/burger.js");
 
 // create routes for selectAll, insertOne, and updateOne and data
 //route to populate all data from burgers table
@@ -19,7 +19,7 @@ router.get("/", function(req, res) {
 });
 //route to post data to burgers table (insert row)
 router.post("/api/burgers", function(req, res) {
-  burgers.create([
+  burgers.insertOne([
     "burger_name", 
   ], [
     req.body.burger_name,
@@ -33,7 +33,7 @@ router.put("/api/burgers/:id", function(req, res) {
     //get value of burger id to update
   var burgerID = "id = " + req.params.id;
     //update devoured to true of burgerID burger
-  burger.update({
+  burger.updateOne({
     devoured: req.body.devoured
   }, burgerID, function(result) {
     if (result.changedRows == 0) {

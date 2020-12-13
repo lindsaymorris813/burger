@@ -1,5 +1,5 @@
 //MySQL connection
-const connection = require('connection.js');
+const connection = require('./connection.js');
 
   // ORM for SQL functions
   var orm = {

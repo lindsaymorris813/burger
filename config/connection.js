@@ -20,10 +20,6 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-app.get("/", function(req, res) {
-  res.send("Connected!");
-});
-
 app.listen(PORT, function() {
   console.log('Server running on http://localhost:' + PORT);
 })

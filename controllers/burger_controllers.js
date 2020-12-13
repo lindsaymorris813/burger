@@ -20,9 +20,9 @@ router.get("/", function(req, res) {
 //route to post data to burgers table (insert row)
 router.post("/api/burgers", function(req, res) {
   burgers.insertOne([
-    "burger_name", 
+    "burger_name", "devoured" 
   ], [
-    req.body.burger_name,
+    req.body.burger_name, req.body.devoured
   ], function(result) {
     // send back data of burger by ID
     res.json({ id: result.insertId });

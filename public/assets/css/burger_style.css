@@ -3,17 +3,61 @@ body {
     color: black;
     align-items: center;
     text-align: center;
+    font-family: 'Andika New Basic', sans-serif;
 }
 
 #logo {
   width: 80%;
+  margin: 10px;
 }
 
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.madeToOrder {
+  width: 45%;
+  margin: 20px;
+  padding: 5px;
+  float: left;
+  background-color: #31343A;
+  font-family: 'Amatic SC', cursive;
+  color: #fafae0;
+}
+
+.alreadyEaten {
+  width: 45%;
+  margin: 20px;
+  padding: 5px;
+  float: left;
+  background-color: #31343A;
+  font-family: 'Amatic SC', cursive;
+  color: #fafae0;
+}
+
+.addBurger {
+  clear: both;
+  width: 95%;
+  margin: 20px;
+  background-color: #31343A;
+  font-family: 'Amatic SC', cursive;
+  color: #fafae0;
+  justify-content: center;
+}
+
+h1 {
+ font-size: 50px;
+}
+h2 {
+  font-size: 35px;
+}
 li {
     padding: 5px;
     margin: 5px;
-    background: #9ac7e8;
-    font-family: Architects Daughter;
+    font-family: 'Amatic SC', cursive;
+    color: #fafae0;
   }
   
   .label {
@@ -23,10 +67,13 @@ li {
   .create-update-form {
     padding: 5px;
     margin: 5px;
-    background: aqua;
   }
   
   .form-group {
     margin-bottom: 5px;
   }
   
+  button {
+    font-family: 'Andika New Basic', sans-serif;
+    margin-bottom: 20px;
+  }

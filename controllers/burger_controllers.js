@@ -33,7 +33,7 @@ router.put("/api/burgers/:id", function(req, res) {
     //get value of burger id to update
   var burgerID = "id = " + req.params.id;
     //update devoured to true of burgerID burger
-  burger.updateOne({
+  burgers.updateOne({
     devoured: req.body.devoured
   }, burgerID, function(result) {
     if (result.changedRows == 0) {

@@ -2,12 +2,18 @@ body {
     background-color: #fcdd60;
     color: black;
     align-items: center;
+    text-align: center;
+}
+
+#logo {
+  width: 80%;
 }
 
 li {
     padding: 5px;
     margin: 5px;
-    background: #faebd7;
+    background: #9ac7e8;
+    font-family: Architects Daughter;
   }
   
   .label {

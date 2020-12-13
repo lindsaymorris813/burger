@@ -1,4 +1,6 @@
 <h1>Burgers</h1>
+<div class = "menu">
+  <div class="column">
 {{!-- grouping for burgers where devoured = false --}}
 <h2>Made to Order!</h2>
 
@@ -10,12 +12,14 @@
 	<h2>{{burger_name}}</h2>
 	{{!-- button to devour or order another (move to Made to Order) --}}
 	<button class="devoured" data-id="{{id}}" data-newdevour="{{devoured}}">
-		{{#if devour}}Devour your burger!{{else}}Devoured! Order another!{{/if}}
+		{{#if devour}}Devoured! Order another!{{else}}Devour your burger!{{/if}}
 	</button>
 </li>
     {{/unless}}
   {{/each}}
 </ul>
+</div>
+<div class="column">
 {{!-- grouping for burgers where devoured = true --}}
 <h2>Already Eaten!</h2>
 
@@ -27,12 +31,14 @@
 	<h2>{{burger_name}}</h2>
 	{{!-- button to devour or order another (move to Made to Order) --}}
 	<button class="devoured" data-id="{{id}}" data-newdevour="{{devoured}}">
-		{{#if devour}}Devour your burger!{{else}}Devoured! Order another!{{/if}}
+		{{#if devour}}Devoured! Order another!{{else}}Devour your burger!{{/if}}
 	</button>
 </li>
     {{/if}}
   {{/each}}
 </ul>
+</div>
+</div>
 {{!-- form to create/add new burger --}}
 <h2>Add a Burger</h2>
 <form class="form">

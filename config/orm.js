@@ -1,5 +1,20 @@
 //MySQL connection
 const connection = require('./connection.js');
+//objToSql from catsApp exercise
+//Helper function to convert object key/value pairs to SQL syntax
+function objToSql(ob) {
+  var arr = [];
+  for (var key in ob) {
+    var value = ob[key];
+    if (Object.hasOwnProperty.call(ob, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
+      }
+      arr.push(key + "=" + value);
+    }
+  }
+  return arr.toString();
+}
 
   // ORM for SQL functions
   var orm = {
@@ -26,8 +41,12 @@ const connection = require('./connection.js');
     },
     //ORM to update a burger in burgers table
     updateOne: function(table1, updateObj, condition, cb3) {
-      var queryUpdate = `UPDATE + ${table1} SET ${objToSql(updateObj)} WHERE ${condition}`;
-  
+      var queryUpdate = "UPDATE " + table1;
+      queryUpdate += " SET ";
+      queryUpdate += objToSql(updateObj);
+      queryUpdate += " WHERE ";
+      queryUpdate += condition;
+
       connection.query(queryUpdate, function(err, result) {
         if (err) {
           throw err;

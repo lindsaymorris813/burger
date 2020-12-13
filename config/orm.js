@@ -3,54 +3,39 @@ const connection = require('connection.js');
 
   // ORM for SQL functions
   var orm = {
+      //ORM pulling all values of burgers table
     selectAll: function(table, cb1) {
-      var queryString = "SELECT * FROM " + table + ";";
-      connection.query(queryString, function(err, result) {
+      var queryAll = "SELECT * FROM " + table + ";";
+      connection.query(queryAll, function(err, result) {
         if (err) {
           throw err;
         }
         cb1(result);
       });
     },
+    //ORM to create/insert a new row in burgers table
     insertOne: function(table, cols, vals, cb2) {
-      var queryString = "INSERT INTO " + table;
-  
-      queryString += " (";
-      queryString += cols.toString();
-      queryString += ") ";
-      queryString += "VALUES (";
-      queryString += printQuestionMarks(vals.length);
-      queryString += ") ";
-  
-      console.log(queryString);
-  
-      connection.query(queryString, vals, function(err, result) {
+      var queryInsert = `INSERT INTO + ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`
+
+      connection.query(queryInsert, vals, function(err, result) {
         if (err) {
           throw err;
         }
-  
         cb2(result);
       });
     },
-    // An example of objColVals would be {name: panther, sleepy: true}
-    updateOne: function(table1, objColVals, condition, cb) {
-      var queryString = "UPDATE " + table;
+    //ORM to update a burger in burgers table
+    updateOne: function(table1, updateObj, condition, cb3) {
+      var queryUpdate = `UPDATE + ${table1} SET ${objToSql(updateObj)} WHERE ${condition}`;
   
-      queryString += " SET ";
-      queryString += objToSql(objColVals);
-      queryString += " WHERE ";
-      queryString += condition;
-  
-      console.log(queryString);
-      connection.query(queryString, function(err, result) {
+      connection.query(queryUpdate, function(err, result) {
         if (err) {
           throw err;
         }
-  
-        cb(result);
+        cb3(result);
       });
     }
   };
 
-  // Export the ORM for Model
+  // Export the ORM for models burgers.js
 module.exports = orm;

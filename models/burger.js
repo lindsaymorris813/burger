@@ -14,7 +14,7 @@ var burgers = {
       cb2(res);
     });
   },
-  //model for updateOne orm
+  //model for updateOne orm (to devoured)
   updateOne: function(objColVals, condition, cb3) {
     orm.update("burgers", objColVals, condition, function(res) {
       cb3(res);

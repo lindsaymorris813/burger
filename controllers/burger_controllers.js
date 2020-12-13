@@ -2,22 +2,24 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
+// import models burger.js
 var cat = require("../models/burger.js");
 
-// Create all our routes and set up logic within those routes where required.
+// create routes for selectAll, insertOne, and updateOne and data
+//route to populate all data from burgers table
 router.get("/", function(req, res) {
-  cat.all(function(data) {
+  burgers.selectAll(function(data) {
+    //create object to hold burgers table data
     var burgerObj = {
       burgers: data
     };
-    console.log(hbsObject);
+    //render burgers table data into index handlebars template
     res.render("index", burgerObj);
   });
 });
-
+//route to post data to burgers table (insert row)
 router.post("/api/burgers", function(req, res) {
-  cat.create([
+  burgers.create([
     "burger_name", 
   ], [
     req.body.burger_name,
@@ -26,10 +28,11 @@ router.post("/api/burgers", function(req, res) {
     res.json({ id: result.insertId });
   });
 });
-
+//update burger (to devoured)
 router.put("/api/burgers/:id", function(req, res) {
+    //get value of burger id to update
   var burgerID = "id = " + req.params.id;
-
+    //update devoured to true of burgerID burger
   burger.update({
     devoured: req.body.devoured
   }, burgerID, function(result) {
@@ -41,5 +44,5 @@ router.put("/api/burgers/:id", function(req, res) {
   });
 });
 
-// Export Route for server.js to use
+// export routes for server.js
 module.exports = router;

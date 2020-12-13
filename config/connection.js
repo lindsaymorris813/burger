@@ -1,8 +1,4 @@
 var mysql = require("mysql");
-const express = require('express');
-const app = express()
-
-const PORT = process.env.PORT || 8080;
 
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
@@ -23,10 +19,6 @@ connection.connect(function(err) {
   }
   console.log("connected as id " + connection.threadId);
 });
-
-app.listen(PORT, function() {
-  console.log('Server running on http://localhost:' + PORT);
-})
 
 // export connection for use in orm.js
 module.exports = connection;

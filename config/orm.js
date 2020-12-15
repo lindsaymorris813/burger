@@ -46,7 +46,7 @@ function objToSql(ob) {
       queryUpdate += objToSql(updateObj);
       queryUpdate += " WHERE ";
       queryUpdate += condition;
-
+      console.log(queryUpdate);
       connection.query(queryUpdate, function(err, result) {
         if (err) {
           throw err;
@@ -56,5 +56,5 @@ function objToSql(ob) {
     }
   };
 
-  // Export the ORM for models burgers.js
+  // Export the ORM for models burger.js
 module.exports = orm;

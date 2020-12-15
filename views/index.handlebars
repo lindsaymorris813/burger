@@ -28,7 +28,7 @@
       <h2>{{burger_name}}</h2>
       {{!-- button to devour or order another (move to Made to Order) --}}
       <button class="devoured" data-id="{{id}}" data-newdevour="{{devoured}}">
-        {{#if devour}}Devoured! Order another!{{else}}Devour your burger!{{/if}}
+        {{#if devoured}}Devoured! Order another!{{else}}Devour your burger!{{/if}}
       </button>
       {{/if}}
       {{/each}}
@@ -46,8 +46,8 @@
 
   <div class="form-group">
     <label for="devour">Devour?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Already Eaten!<br>
-    <input type="radio" name="sleepy" value="0"> Made to Order!
+    <input type="radio" name="devour" value="1" checked> Already Eaten!<br>
+    <input type="radio" name="devour" value="0"> Made to Order!
   </div>
 
   <button type="submit">Add Burger</button>

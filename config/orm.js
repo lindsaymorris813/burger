@@ -1,7 +1,16 @@
 //MySQL connection
 const connection = require('./connection.js');
 //objToSql from catsApp exercise
-//Helper function to convert object key/value pairs to SQL syntax
+//Helper functions to pass question marks and to convert object key/value pairs to SQL syntax
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
 function objToSql(ob) {
   var arr = [];
   for (var key in ob) {
@@ -30,7 +39,7 @@ function objToSql(ob) {
     },
     //ORM to create/insert a new row in burgers table
     insertOne: function(table, cols, vals, cb2) {
-      var queryInsert = `INSERT INTO + ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`
+      var queryInsert = `INSERT INTO ${table} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)})`
 
       connection.query(queryInsert, vals, function(err, result) {
         if (err) {

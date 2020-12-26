@@ -23,9 +23,13 @@ Create a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM.
 
 ## INSTALLATION
 
-node express
+node express js
+
 node express handlebars
+
 mysql
+
+heroku (deployed site)
 
 ## USAGE
 

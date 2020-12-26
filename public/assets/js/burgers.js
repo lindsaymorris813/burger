@@ -30,7 +30,7 @@ $(function() {
   
       var newBurger = {
         name: $("#burg").val().trim(),
-        devoured: $("[name=devoured]:checked").val().trim()
+        devoured: $("[name=devoured]:checked").val()
       };
   
       //POST request to insert new Burger data into burgers table
